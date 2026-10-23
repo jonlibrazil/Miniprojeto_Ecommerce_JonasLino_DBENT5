@@ -1,30 +1,37 @@
-import type { Produto } from "./types";
-import type { Cliente } from "./types";
+import type { Produto, Cliente } from "./types";
 
 export const produtos: Produto[] = [
     {
-        codigo: 1,
+        id: 1,
         nome: "Teclado",
         preco: 150,
-        quantidade: 8,
-        categoria: "hardware"
+        estoque: 8,
+        categoria: "Hardware"
     },
 
     {
-        codigo: 2,
+        id: 2,
         nome: "Mouse",
         preco: 120,
-        quantidade: 12,
-        categoria: "hardware"   
+        estoque: 12,
+        categoria: "Hardware"   
     },
 
     {
-        codigo: 3,
+        id: 3,
         nome: "Placa de Video",
         preco: 350,
-        quantidade: 6,
-        categoria: "hardware"
-    }
+        estoque: 1,
+        categoria: "Hardware"
+    },
+
+    {
+        id: 4,
+        nome: "Antivirus",
+        preco: 150,
+        estoque: 26,
+        categoria: "Software"   
+    } 
 ];
 
 export const clientes: Cliente[] = [
@@ -45,4 +52,4 @@ export const clientes: Cliente[] = [
         nome: "Guilherme",
         email: "gui123@outlook.com"
     }
-]
+];
