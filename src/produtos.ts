@@ -88,7 +88,7 @@ export function removerProduto(id: number): boolean {
     const indice = produtos.findIndex(produto => produto.id === id);
 
     if (indice === -1) {
-        console.log("Produto não encontrado");
+        console.log("Produto não encontrado.");
         return false;
     };
 
