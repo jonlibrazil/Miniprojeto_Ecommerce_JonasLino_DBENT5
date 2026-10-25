@@ -1,4 +1,4 @@
-import type { Produto, Cliente, ItemCarrinho } from "./types";
+import type { Produto, Cliente, ItemCarrinho, Pedido } from "./types";
 
 export const produtos: Produto[] = [
     {
@@ -54,4 +54,6 @@ export const clientes: Cliente[] = [
     }
 ];
 
-export const carrinho: ItemCarrinho[] = []
+export const carrinho: ItemCarrinho[] = [];
+
+export const pedidos: Pedido[] = [];

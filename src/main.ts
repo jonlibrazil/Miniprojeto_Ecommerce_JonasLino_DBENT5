@@ -2,10 +2,11 @@
 // clientes e por fim compilar. 
 
 import { listarClientes, buscarCliente, cadastrarCliente } from "./clientes";
-import { listarProdutos, buscarProduto, cadastrarProduto, buscarProdutosPorNome, filtrarPorCategoria,atualizarProduto, removerProduto } from "./produtos";
+import { listarProdutos, buscarProduto, cadastrarProduto, buscarProdutosPorNome, filtrarPorCategoria, atualizarProduto, removerProduto } from "./produtos";
 import { adicionarAoCarrinho, listarCarrinho, removerDoCarrinho, alterarQuantidade } from "./carrinho";
 import { formatarMoeda } from "./utils";
-import { carrinho } from "./data";
+import { carrinho, pedidos } from "./data";
+import { finalizarPedido, listarPedidos, listarPedidosDoCliente } from "./pedidos";
 
 
 console.log("\n === BEM VINDO AO ECOMMERCE DIGITAL ===");
@@ -81,7 +82,7 @@ console.log("Removendo item: Placa de Video");
 removerProduto(3);
 
 
-console.log("\n\n=== SESSÃO DE CLIENTES ===");
+console.log("\n\n=== SESSÃO DE CLIENTES ===\n\n");
 listarClientes();
 
 
@@ -130,7 +131,7 @@ const janaina = cadastrarCliente({
 listarClientes();
 
 
-console.log("\n\n=== CARRINHO DE COMPRAS ===");
+console.log("\n\n=== CARRINHO DE COMPRAS ===\n\n");
 listarCarrinho();
 
 console.log("\nAdicionando item ao carrinho: Código 18 - 5 unidades");
@@ -164,6 +165,79 @@ alterarQuantidade(1, 600);
 console.log("\nAlterando unidade do item no carrinho: Teclado");
 alterarQuantidade(1, 6);
 listarCarrinho();
+
+
+console.log("\n\n=== FINALIZAÇÃO DO PEDIDO ===\n\n");
+
+console.log("Finalizando carrinho | Cliente: Maria");
+finalizarPedido(1);
+
+console.log("\nConsultando pedidos do cliente:");
+listarPedidosDoCliente(1);
+
+console.log("Finalizando carrinho vazio");
+finalizarPedido(3);
+
+
+console.log("\n= INICIANDO NOVO CARRINHO =");
+
+adicionarAoCarrinho(2, 2);
+adicionarAoCarrinho(4, 5);
+listarCarrinho();
+
+console.log("\nFinalizando carrinho | Cliente: Inexistente");
+finalizarPedido(100);
+
+console.log("\nFinalizando carrinho | Cliente: Janaina");
+finalizarPedido(5);
+
+console.log("\nConsultando pedidos do cliente:");
+listarPedidosDoCliente(5);
+
+console.log("= INICIANDO NOVO CARRINHO =");
+adicionarAoCarrinho(5, 2);
+adicionarAoCarrinho(4, 3);
+listarCarrinho();
+
+console.log("\nFinalizando carrinho | Cliente: Maria");
+finalizarPedido(1);                
+
+     
+console.log("\n= CONSULTANDO PEDIDOS =");
+listarPedidos();   
+
+console.log("Consultando pedidos do cliente: Maria");
+listarPedidosDoCliente(1); 
+
+console.log("Consultando pedidos do cliente: Guilherme");
+listarPedidosDoCliente(3);     
+
+console.log("\nConsultando pedidos do cliente: Inexistente");
+listarPedidosDoCliente(99);
+
+
+console.log("\n= Alterando preço Carregador após finalizar pedido =");
+listarProdutos();
+console.log("\nAtualizando item: Preço de Carregador");
+atualizarProduto({ 
+    id: 5, 
+    nome: "Carregador", 
+    preco: 170, 
+    estoque: 8, 
+    categoria: "Hardware" 
+});
+
+// console.log("");
+listarProdutos();
+
+console.log("\nConsultando pedidos: Preço não alterado");
+buscarProduto(5);
+
+listarPedidos();
+
+console.log("\n= REMOVENDO PRODUTO JÁ VENDIDO =");
+console.log("Removendo item: Antivirus");
+removerProduto(4);
 
 
 console.log("\n\n=== FIM DO SISTEMA ===");

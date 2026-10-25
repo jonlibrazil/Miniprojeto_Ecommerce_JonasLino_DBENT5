@@ -1,4 +1,4 @@
-import { produtos } from "./data";
+import { produtos, pedidos } from "./data";
 import { Produto, Categoria } from "./types";
 import { formatarMoeda } from "./utils";
 
@@ -92,6 +92,15 @@ export function removerProduto(id: number): boolean {
         return false;
     };
 
+    const jaFoiVendido = pedidos.some(pedido => 
+        pedido.itens.some(item => item.idProduto === id)
+    );
+
+    if (jaFoiVendido) {
+        console.log("Produto já foi vendido, não pode ser removido.");
+        return false;
+    }
+    
     produtos.splice(indice, 1);
     console.log("Produto removido");
     return true;
