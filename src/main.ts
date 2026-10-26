@@ -1,22 +1,20 @@
-// Sprint 1: Definir os tipos de produtos, clientes, itens do carrinho e pedidos, e dados iniciais de produtos e 
-// clientes e por fim compilar. 
-
 import { listarClientes, buscarCliente, cadastrarCliente } from "./clientes";
 import { listarProdutos, buscarProduto, cadastrarProduto, buscarProdutosPorNome, filtrarPorCategoria, atualizarProduto, removerProduto } from "./produtos";
 import { adicionarAoCarrinho, listarCarrinho, removerDoCarrinho, alterarQuantidade } from "./carrinho";
 import { formatarMoeda } from "./utils";
 import { carrinho, pedidos } from "./data";
 import { finalizarPedido, listarPedidos, listarPedidosDoCliente } from "./pedidos";
+import { relatorioProdutosVendidos, relatorioVendas } from "./relatorios";
 
 
-console.log("\n === BEM VINDO AO ECOMMERCE DIGITAL ===");
+console.log("\n\n === BEM VINDO AO ECOMMERCE DIGITAL ===");
 
 
-console.log("\nProdutos cadastrados:");
+console.log("\n\nProdutos cadastrados:");
 listarProdutos();
 
 
-console.log("\nCadastrando um novo produto: Codigo 2");
+console.log("\nCadastrando um novo produto: Código 2");
 const mouse = cadastrarProduto({
         id: 2,
         nome: "Mouse",
@@ -28,7 +26,7 @@ console.log(mouse ? "Produto cadastrado!" : "Código já utilizado.");
 
 
 console.log("\nCadastrando um novo produto:");
-let carregador = cadastrarProduto({
+cadastrarProduto({
     id: 5,
     nome: "",
     preco: 110,
@@ -36,7 +34,7 @@ let carregador = cadastrarProduto({
     categoria: "Hardware"
 });
 console.log("Cadastrando um novo produto: Carregador");
-carregador = cadastrarProduto({
+cadastrarProduto({
     id: 5,
     nome: "Carregador",
     preco: 110,
@@ -46,12 +44,11 @@ carregador = cadastrarProduto({
 listarProdutos();
 
 
-console.log("\nConsultando produto de código 2:");
+console.log("\nConsultando produto de código: 2");
 const produto = buscarProduto(2);
     if (produto !== undefined) {
-    console.log(produto);
-}
-    else {
+    console.log(produto)
+    } else {
     console.log("Produto não encontrado.")
 };
 
@@ -75,10 +72,10 @@ atualizarProduto({
 listarProdutos();
 
 
-console.log("\nRemovendo item: Placa de Video");
+console.log("\nRemovendo item: Placa de Vídeo");
 removerProduto(3);
 listarProdutos();
-console.log("Removendo item: Placa de Video");
+console.log("Removendo item: Placa de Vídeo");
 removerProduto(3);
 
 
@@ -89,41 +86,39 @@ listarClientes();
 console.log("\nConsultando cliente de código 11:");
 let cliente = buscarCliente(11);
     if (cliente !== undefined) {
-    console.log(cliente);
-}
-    else {
+    console.log(cliente)
+    } else {
     console.log("Cliente não encontrado.")
-};
+    };
 
-console.log("\nConsultando cliente de código 1:");
+console.log("\nConsultando cliente de código: 1");
 cliente = buscarCliente(1);
     if (cliente !== undefined) {
-    console.log(cliente);
-}
-    else {
+    console.log(cliente)
+    } else {
     console.log("Cliente não encontrado.")
 };
 
 console.log("\nCadastrando um novo cliente:");
-const fulano = cadastrarCliente({
+cadastrarCliente({
         id: 8,
         nome: "",
         email: ""
 });
 console.log("\nCadastrando um novo cliente: João");
-const joao = cadastrarCliente({
+cadastrarCliente({
         id: 2,
         nome: "João",
         email: "joao123@outlook.com"
 });
 console.log("\nCadastrando um novo cliente: Email duplicado");
-const emailDuplicado = cadastrarCliente({
+cadastrarCliente({
         id: 4,
         nome: "Joãozinho",
         email: "JOAO123@outlook.com"
 });
 console.log("\nCadastrando um novo cliente: Janaina");
-const janaina = cadastrarCliente({
+cadastrarCliente({
         id: 5,
         nome: "Janaina",
         email: "janaina@gmail.com"
@@ -166,16 +161,18 @@ console.log("\nAlterando unidade do item no carrinho: Teclado");
 alterarQuantidade(1, 6);
 listarCarrinho();
 
-
 console.log("\n\n=== FINALIZAÇÃO DO PEDIDO ===\n\n");
 
-console.log("Finalizando carrinho | Cliente: Maria");
+console.log("*Demonstração de erro: Relatório de vendas sem pedidos*");
+relatorioVendas();
+
+console.log("\nFinalizando carrinho | Cliente: Maria");
 finalizarPedido(1);
 
 console.log("\nConsultando pedidos do cliente:");
 listarPedidosDoCliente(1);
 
-console.log("Finalizando carrinho vazio");
+console.log("Finalizando carrinho vazio:");
 finalizarPedido(3);
 
 
@@ -231,13 +228,17 @@ atualizarProduto({
 listarProdutos();
 
 console.log("\nConsultando pedidos: Preço não alterado");
-buscarProduto(5);
-
 listarPedidos();
 
 console.log("\n= REMOVENDO PRODUTO JÁ VENDIDO =");
 console.log("Removendo item: Antivirus");
 removerProduto(4);
 
+console.log("\n");
+relatorioVendas();
+console.log("\nConsultando relatório por produtos:");
+relatorioProdutosVendidos();
 
 console.log("\n\n=== FIM DO SISTEMA ===");
+
+console.log("\n\nDesenvolvido por: Jonas Lino | Desenvolvedor Back-End Node.js Turma 5");

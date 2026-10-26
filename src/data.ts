@@ -19,7 +19,7 @@ export const produtos: Produto[] = [
 
     {
         id: 3,
-        nome: "Placa de Video",
+        nome: "Placa de Vídeo",
         preco: 350,
         estoque: 1,
         categoria: "Hardware"

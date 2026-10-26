@@ -72,6 +72,7 @@ function exibirPedido(pedido: Pedido): void {
     const nomeCliente = cliente !== undefined ? cliente.nome : "Cliente não encontrado.";
 
     console.log(
+        `_______________________________________________\n` +
         `Pedido: ${pedido.id} | Cliente: ${nomeCliente} | ` +
         `Data: ${pedido.data.toLocaleDateString("pt-BR")}`
     );
